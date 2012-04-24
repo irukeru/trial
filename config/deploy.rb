@@ -1,6 +1,6 @@
-set :application, "trials"
+set :application, "trial"
 set :repository,  "git@github.com:irukeru/trial.git"
-set :deploy_to, "/home/irukeru/work/web/milvus/projects/trials"
+set :deploy_to, "/home/irukeru/work/web/milvus/projects/#{application}"
 set :branch, "master"
 set :user, "deploy"
 set :use_sudo, false
@@ -17,6 +17,25 @@ role :db,  "localhost", :primary => true # This is where Rails migrations will r
 
 ssh_options[:forward_agent] = true
 
+set :current_path, "#{deploy_to}/current"
+set :releases_path, "#{deploy_to}/releases/"
+set :shared_path, "#{deploy_to}/shared/"
+
+namespace:deploy do
+    task:start do
+    end
+    task:stop do
+    end
+    task:finalize_update do
+        run "chmod -R g+w #{release_path}"
+    end
+    task:restart do
+    end
+   after "deploy:restart" do
+         #add any tasks in here that you want to run after the project is deployed
+         run "rm -rf #{release_path}.git"
+   end
+end
 
 #role :db,  "your slave db-server here"
 
