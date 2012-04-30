@@ -1,7 +1,8 @@
 set :application, "trial"
 set :repository,  "git@github.com:irukeru/trial.git"
 set :deploy_to, "/home/deploy/projects/#{application}"
-set   :domain,  "dev.milvus.com.tr"
+set :domain,  "li443-28.members.linode.com"
+set :deploy_via, "copy"
 
 set :branch, "master"
 set :user, "deploy"
@@ -13,9 +14,9 @@ set :scm_username, "irukeru"
 set :scm_password, "asdzxc123"
 
 
-role :web, "dev.milvus.com.tr"                          # Your HTTP server, Apache/etc
-role :app, "li443-28.members.linode.com"                          # This may be the same as your `Web` server
-role :db,  "dev.milvus.com.tr", :primary => true # This is where Rails migrations will run
+role :web, "li443-28.members.linode.com"                   # Your HTTP server, Apache/etc
+role :app, "li443-28.members.linode.com"                   # This may be the same as your `Web` server
+role :db,  "li443-28.members.linode.com", :primary => true # This is where Rails migrations will run
 
 ssh_options[:forward_agent] = true
 
