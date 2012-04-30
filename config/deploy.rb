@@ -1,5 +1,5 @@
 set :application, "trial"
-#set :repository,  "git@github.com:irukeru/trial.git"
+set :repository,  "git@github.com:irukeru/trial.git"
 set :deploy_to, "/home/deploy/projects/#{application}"
 set   :domain,  "dev.milvus.com.tr"
 
@@ -9,8 +9,8 @@ set :use_sudo, false
 set :ee_system, "system"
 
 set :scm, :git
-#set :scm_username, "irukeru"
-#set :scm_password, "asdzxc123"
+set :scm_username, "irukeru"
+set :scm_password, "asdzxc123"
 
 
 role :web, "dev.milvus.com.tr"                          # Your HTTP server, Apache/etc
